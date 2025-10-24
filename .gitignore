@@ -80,3 +80,15 @@ __recovery/
 
 # Boss dependency manager vendor folder https://github.com/HashLoad/boss
 modules/
+
+# Blaise Pascal
+/bin/output
+_checkpoint.cmd
+_distro.cmd
+/bin/testbed
+checkpoint.zip
+pack.yml
+/website
+/bin/res/zig
+/bin/res/lldb
+

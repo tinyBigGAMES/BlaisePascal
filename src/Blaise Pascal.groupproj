@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{09AE02C6-4133-4977-AC68-38655EC4057C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="tester\BPTester.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\examples\testbed\BPTestbed.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="bpbench_delphi\BPBench_Delphi.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="blaise\Blaise.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BPTester">
+        <MSBuild Projects="tester\BPTester.dproj"/>
+    </Target>
+    <Target Name="BPTester:Clean">
+        <MSBuild Projects="tester\BPTester.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BPTester:Make">
+        <MSBuild Projects="tester\BPTester.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BPTestbed">
+        <MSBuild Projects="..\examples\testbed\BPTestbed.dproj"/>
+    </Target>
+    <Target Name="BPTestbed:Clean">
+        <MSBuild Projects="..\examples\testbed\BPTestbed.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BPTestbed:Make">
+        <MSBuild Projects="..\examples\testbed\BPTestbed.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BPBench_Delphi">
+        <MSBuild Projects="bpbench_delphi\BPBench_Delphi.dproj"/>
+    </Target>
+    <Target Name="BPBench_Delphi:Clean">
+        <MSBuild Projects="bpbench_delphi\BPBench_Delphi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BPBench_Delphi:Make">
+        <MSBuild Projects="bpbench_delphi\BPBench_Delphi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Blaise">
+        <MSBuild Projects="blaise\Blaise.dproj"/>
+    </Target>
+    <Target Name="Blaise:Clean">
+        <MSBuild Projects="blaise\Blaise.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Blaise:Make">
+        <MSBuild Projects="blaise\Blaise.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BPTester;BPTestbed;BPBench_Delphi;Blaise"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BPTester:Clean;BPTestbed:Clean;BPBench_Delphi:Clean;Blaise:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BPTester:Make;BPTestbed:Make;BPBench_Delphi:Make;Blaise:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
